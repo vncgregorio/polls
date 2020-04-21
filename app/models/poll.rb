@@ -8,5 +8,7 @@
 #  updated_at  :datetime         not null
 #
 class Poll < ApplicationRecord
+  has_many :views
+  
   validates_presence_of :description
 end

@@ -10,13 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_203559) do
+ActiveRecord::Schema.define(version: 2020_04_21_210004) do
 
   create_table "polls", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["description"], name: "index_polls_on_description"
+  end
+
+  create_table "views", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "poll_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["poll_id"], name: "index_views_on_poll_id"
   end
 
 end
