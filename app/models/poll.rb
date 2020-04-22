@@ -11,9 +11,17 @@ class Poll < ApplicationRecord
   has_many :views
   has_many :options
 
-  validates_presence_of :description
+  validates_presence_of :description  
+
+  def poll_description=(value)
+    self.description = value
+  end
 
   def options=(arr)
-
+    arr.each do |item|
+      self.options.build(
+        :description => item
+      )
+    end
   end
 end
