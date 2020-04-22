@@ -9,6 +9,7 @@
 #
 class Poll < ApplicationRecord
   has_many :views
-  
+  has_many :options
+
   validates_presence_of :description
 end
