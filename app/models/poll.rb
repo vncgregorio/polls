@@ -12,4 +12,8 @@ class Poll < ApplicationRecord
   has_many :options
 
   validates_presence_of :description
+
+  def options=(arr)
+
+  end
 end

@@ -9,7 +9,6 @@ gem 'jbuilder', '~> 2.5'
 # gem 'active_model_serializers', '~> 0.10.0'
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'rack-cors'
-gem 'versionist'
 gem 'auto_increment'
 
 group :development, :test do
