@@ -46,6 +46,9 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     arel (9.0.0)
+    auto_increment (1.5.1)
+      activerecord (>= 4.0, < 6.1)
+      activesupport (>= 4.0, < 6.1)
     bootsnap (1.4.6)
       msgpack (~> 1.0)
     builder (3.2.4)
@@ -178,6 +181,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  auto_increment
   bootsnap (>= 1.1.0)
   byebug
   database_cleaner-active_record

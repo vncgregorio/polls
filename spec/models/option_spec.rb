@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: options
+#
+#  id          :bigint           not null, primary key
+#  poll_id     :integer
+#  number      :integer
+#  description :string(255)
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
 require 'rails_helper'
 
 RSpec.describe Option, type: :model do
@@ -9,11 +20,6 @@ RSpec.describe Option, type: :model do
 
   it 'is not valid without a description' do
     option.description = nil
-    expect(option).not_to be_valid
-  end
-
-  it 'is not valid without a number' do
-    option.number = nil
     expect(option).not_to be_valid
   end
 
