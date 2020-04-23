@@ -3,8 +3,10 @@
 ## PRÉ - REQUISITOS
 
 GNU Linux ([Ubuntu](https://ubuntu.com/download/desktop/thank-you?version=19.10&architecture=amd64) 19.10 no desenvolvimento)
+
 [Ruby](https://cache.ruby-lang.org/pub/ruby/2.7/ruby-2.7.1.tar.gz) (versão 2.5.1)
 Rails 5.2.1
+
 MySQL (versão 14.14 no desenvolvimento)
 
 ## INSTALAÇÃO
@@ -64,6 +66,27 @@ A aplicação utiliza as dependências abaixo:
 
 ## SOBRE O PROJETO
 
+A atividade propõe a criação de uma API simples para registro e exibição de resultados de enquetes / pesquisas com um conjunto pré-determinado de respostas.
+Outro ponto importante proposto para o exercício é que a aplicação pudesse ser escalada horizontalmente (novos serviços) com facilidade, ainda que compartilhando o acesso à base de dados.
+
+Assim, a aplicação desenvolvida permite que, após a configuração da base de dados a ser acessada através do database.yml, a mesma possa ser estruturada para deploy em cenários de menor ou maior disponibilidade.
+
+Sugestões para deploy:
+
+Menor disponibilidade: uma forma simples que pode ser utilizada para publicar a aplicação em um cenário com menor concorrência de requests pode ser a utilização de [Capistrano](https://github.com/capistrano/capistrano) orquestrando o deploy em uma VPS configurada com um [Phusion Passenger](https://www.phusionpassenger.com/) ou [Nginx](https://nginx.org/).
+
+Maior disponibilidade: outra opção simples de criar deploys simplificados é a utilização de Docker para a criação de micro ambientes. Essa opção tem a vantagem de, uma vez configurado, ter toda a estrutura necessária para o deploy contida em um único "container" e pode ser facilmente escalado para múltiplas instâncias através do [Swarm](https://docs.docker.com/get-started/swarm-deploy/)
+
+O desenvolvimento da aplicação seguiu o padrão TDD e as specs de testes documentam as características da API como um todo.
+
+Sobre a estrutura do projeto
+
+- Para facilitar o entendimento e manutenção, a estrutura da aplicação tem todas as respostas em JSON organizadas em arquivos da gem JBuilder.
+
+- Os modelos contém a documentação da estrutura da tabela, conforme padrão da gem annotate_models
+
+- Conforme identificadas, especificações que pudessem levar a operações complexas e que poderiam poluir o código foram organizadas utilizando design patterns que permitam uma legibilidade e melhoria na manutenção do código como um todo.
+
 ## TESTES
 
 Para rodar os testes:
@@ -83,7 +106,15 @@ Os teste foram cruciais para definir os relacionamentos entre as entidades propo
 Para a padronização dos testes utilizei como referência:
 
 [https://rspec.info/about/](https://rspec.info/about/)
+
 [http://www.betterspecs.org/](http://www.betterspecs.org/)
+
 [https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/](https://blog.davidchelimsky.net/blog/2012/02/12/validations-are-behavior-associations-are-structure/)
 
 ## MELHORIAS SUGERIDAS
+
+As seguintes melhorias são sugeridas para a escalabilidade e manutenção da API:
+
+- Controle de acesso baseado em token para controlar quais aplicações podem consumir a API;
+
+- Versionamento da API para manter a compatibilidade com plataformas integradas enquanto permite a evolução da aplicação;
