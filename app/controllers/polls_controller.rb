@@ -1,6 +1,7 @@
 class PollsController < ApplicationController
 
   before_action :set_poll, only: [:show, :vote]
+  after_action :create_view, only: [:show]
 
   def show
   end
@@ -30,6 +31,10 @@ class PollsController < ApplicationController
         :poll_description,
         :options
       )
+    end
+
+    def create_view
+      @poll.views.create!
     end
 
 end

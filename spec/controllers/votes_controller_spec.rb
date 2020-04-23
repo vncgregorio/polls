@@ -9,7 +9,7 @@ RSpec.describe VotesController, type: :controller do
     let!(:option) { create(:option, :poll => poll) }
     let(:json) { JSON.parse(response.body) }
 
-    context 'without Content-Type' do
+    describe 'without Content-Type' do
 
       it 'return 406 NOT ACCEPTABLE' do
         raw = {
@@ -21,7 +21,7 @@ RSpec.describe VotesController, type: :controller do
 
     end
 
-    context 'without option id' do
+    describe 'without option id' do
 
       before :each do
         request.headers['Content-Type'] = 'application/json'
@@ -35,7 +35,7 @@ RSpec.describe VotesController, type: :controller do
 
     end
 
-    context 'with wrong poll id' do
+    describe 'with wrong poll id' do
 
       before :each do
         request.headers['Content-Type'] = 'application/json'
@@ -51,7 +51,7 @@ RSpec.describe VotesController, type: :controller do
 
     end
 
-    context 'with right params' do
+    describe 'with right params' do
 
       before :each do
         request.headers['Content-Type'] = 'application/json'

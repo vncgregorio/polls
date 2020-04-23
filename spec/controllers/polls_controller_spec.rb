@@ -9,7 +9,7 @@ RSpec.describe PollsController, type: :controller do
     let!(:option) { create(:option, :poll => poll) }
     let(:json) { JSON.parse(response.body) }
 
-    context 'without Content-Type' do
+    describe 'without Content-Type' do
 
       it 'return 406 NOT ACCEPTABLE' do
         get :show, :params => {:id => poll.id}, :format => :json
@@ -18,7 +18,7 @@ RSpec.describe PollsController, type: :controller do
 
     end
 
-    context 'with wrong poll id' do
+    describe 'with wrong poll id' do
 
       it 'returns 404 NOT FOUND' do
         request.headers['Content-Type'] = 'application/json'
@@ -28,7 +28,7 @@ RSpec.describe PollsController, type: :controller do
 
     end
 
-    context 'with right params' do
+    describe 'with right params' do
 
       before :each do
         request.headers['Content-Type'] = 'application/json'
@@ -48,6 +48,10 @@ RSpec.describe PollsController, type: :controller do
         expect(response_option["option_description"]).to eq(poll.options.first.description)
       end
 
+      it 'creates a view record' do
+        expect(View.count).not_to eq(0)
+      end
+
     end
 
   end
@@ -56,7 +60,7 @@ RSpec.describe PollsController, type: :controller do
 
     let(:json) { JSON.parse(response.body) }
 
-    context 'without Content-Type' do
+    describe 'without Content-Type' do
 
       it 'return 406 NOT ACCEPTABLE' do
         raw = {
@@ -71,7 +75,7 @@ RSpec.describe PollsController, type: :controller do
 
     end
 
-    context 'without description' do
+    describe 'without description' do
 
       before :each do
         request.headers['Content-Type'] = 'application/json'
@@ -95,7 +99,7 @@ RSpec.describe PollsController, type: :controller do
 
     end
 
-    context 'with right params' do
+    describe 'with right params' do
 
       before :each do
         request.headers['Content-Type'] = 'application/json'
