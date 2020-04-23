@@ -53,6 +53,18 @@ Após atualizar a gemset com as dependências da aplicação, é necessário ini
 rake db:create db:migrate db:seed
 ```
 
+Em um ambiente local de desenvolvimento, utilizando Puma como servidor de aplicação, a aplicação pode ser executada com um dos comandos abaixo:
+
+```
+rails s
+```
+
+ou
+
+```
+bundle exec rails s
+```
+
 ## DEPENDÊNCIAS
 
 A aplicação utiliza as dependências abaixo:
