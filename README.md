@@ -14,6 +14,26 @@ MySQL (versão 14.14 no desenvolvimento)
 É necessário configurar os acessos à base de dados no arquivo database.yml
 A aplicação foi desenvolvida utilizando [MySQL](https://www.mysql.com/) como base de dados porém pode ser alterada para utilizar [PostgreSQL](https://www.postgresql.org/) ou outra base de dados com alterações no Gemfile (para o adaptador) e no database.yml.
 
+Exemplo de trecho do database.yml para conexão local:
+
+```
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: optera1234
+  socket: /var/run/mysqld/mysqld.sock
+```
+
+Exemplo de trecho do database.yml para conexão externa:
+
+```
+production:
+  production:
+    url: "mysql2://myuser:mypass@localhost/somedatabase"
+```
+
 Para utilização em máquina de desenvolvimento com outros projetos Rails em versões diferentes, recomendo a utilização de um sistema gestor de stacks de desenvolvimento, como o Rbenv ou RVM. No ambiente de desenvolvimento utilizei o [RVM](https://rvm.io/). Para replicar o ambiente de desenvolvimento, crie uma nova gemset com os comandos abaixo:
 
 ```
