@@ -55,7 +55,7 @@ A aplicação utiliza as dependências abaixo:
 [seedbank](https://github.com/james2m/seedbank)
   Para organizar o carregamento da base de dados em diversas tabelas e, também, para não poluir um único arquivo de db/seeds.rb.
 
-[annotate](https://github.com/ctran/annotate_models)
+[annotate_models](https://github.com/ctran/annotate_models)
   Gem utilizada para gerar comentários e documentação em modelos e testes com o mapeamento das colunas em base de dados para um recurso
 
 [auto_increment](https://github.com/felipediesel/auto_increment)
@@ -75,7 +75,7 @@ Sugestões para deploy:
 
 Menor disponibilidade: uma forma simples que pode ser utilizada para publicar a aplicação em um cenário com menor concorrência de requests pode ser a utilização de [Capistrano](https://github.com/capistrano/capistrano) orquestrando o deploy em uma VPS configurada com um [Phusion Passenger](https://www.phusionpassenger.com/) ou [Nginx](https://nginx.org/).
 
-Maior disponibilidade: outra opção simples de criar deploys simplificados é a utilização de Docker para a criação de micro ambientes. Essa opção tem a vantagem de, uma vez configurado, ter toda a estrutura necessária para o deploy contida em um único "container" e pode ser facilmente escalado para múltiplas instâncias através do [Swarm](https://docs.docker.com/get-started/swarm-deploy/)
+Maior disponibilidade: outra opção simples de criar deploys escaláveis é a utilização de [Docker](https://www.docker.com/) para a criação de micro ambientes. Essa opção tem a vantagem de, uma vez configurado, ter toda a estrutura necessária para o deploy contida em um único "container" e pode ser facilmente escalado para múltiplas instâncias através do [Swarm](https://docs.docker.com/get-started/swarm-deploy/)
 
 O desenvolvimento da aplicação seguiu o padrão TDD e as specs de testes documentam as características da API como um todo.
 
