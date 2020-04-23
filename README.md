@@ -35,23 +35,23 @@ rake db:create db:migrate db:seed
 
 A aplicação utiliza as dependências abaixo:
 
-rspec
+rspec(https://github.com/rspec/rspec-rails)
   Utilizei o RSpec para os testes unitários nos modelos e para os testes de endpoints da API (controller specs).
-shoulda-matchers
+shoulda-matchers(https://github.com/thoughtbot/shoulda-matchers)
   Gem com DSL utilizada para facilitar o desenvolvimento dos testes integrados do sistema
-factory_bot_rails
+factory_bot_rails(https://github.com/thoughtbot/factory_bot_rails)
   Utilizado para a geração de stubs para os testes automatizados.
-faker
+faker(https://github.com/faker-ruby/faker)
   Utilizado para a geração de dados fake para os stubs nos testes e para popular a base de dados de desenvolvimento.
-database_cleaner
+database_cleaner(https://github.com/DatabaseCleaner/database_cleaner)
   Gem utilizada para limpar e manter a base de dados de testes e stubs estáveis.
-seedbank
+seedbank(https://github.com/james2m/seedbank)
   Para organizar o carregamento da base de dados em diversas tabelas e, também, para não poluir um único arquivo de db/seeds.rb.
-annotate
+annotate(https://github.com/ctran/annotate_models)
   Gem utilizada para gerar comentários e documentação em modelos e testes com o mapeamento das colunas em base de dados para um recurso
-auto_increment
+auto_increment(https://github.com/felipediesel/auto_increment)
   Para facilitar e não poluir o código dos modelos para casos de atributos com comportamento de auto incremento baseado em escopo. Foi utilizado no desenvolvimento do número das opções de uma enquete, utilizando um atributo específico ao invés do id sequencial da base de dados.
-jbuilder
+jbuilder(https://github.com/rails/jbuilder)
   Gem mantida pela equipe do Rails muito útil para simplificar a geração de respostas em json para APIs.
 
 ## SOBRE O PROJETO
@@ -70,9 +70,7 @@ ou
 bundle exec rspec
 ```
 
-Os teste foram cruciais para definirmos os relacionamentos entre as entidades propostas no exercício e também para verificar as possibilidades de filtros.
-
-As definições de como realizar os testes e o quê deve ser testado em uma aplicação são assuntos de diversos debates contínuos literalmente por décadas na comunidade de desenvolvimento, com proponentes e defensores de diversas abordagens.
+Os teste foram cruciais para definir os relacionamentos entre as entidades propostas no exercício e também para garantir os códigos de resposta corretos para a API.
 
 Para a padronização dos testes utilizei como referência:
 
