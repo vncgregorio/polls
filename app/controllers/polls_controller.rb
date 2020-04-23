@@ -1,13 +1,12 @@
 class PollsController < ApplicationController
-  include ErrorSerializer
 
-  before_action :set_poll, only: [:show]
+  before_action :set_poll, only: [:show, :vote]
 
   def show
   end
 
   def create
-    @poll = Poll.new(create_params)
+    @poll = Poll.new(poll_params)
 
     if @poll.save
       render json: {:poll_id => @poll.id}
@@ -26,7 +25,7 @@ class PollsController < ApplicationController
       end
     end
 
-    def create_params
+    def poll_params
       params.permit(
         :poll_description,
         :options

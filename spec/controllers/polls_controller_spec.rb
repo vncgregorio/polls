@@ -18,7 +18,7 @@ RSpec.describe PollsController, type: :controller do
 
     end
 
-    context 'with right Content-Type and wrong poll id' do
+    context 'with wrong poll id' do
 
       it 'returns 404 NOT FOUND' do
         request.headers['Content-Type'] = 'application/json'
@@ -28,7 +28,7 @@ RSpec.describe PollsController, type: :controller do
 
     end
 
-    context 'with right Content-Type' do
+    context 'with right params' do
 
       before :each do
         request.headers['Content-Type'] = 'application/json'
@@ -55,6 +55,21 @@ RSpec.describe PollsController, type: :controller do
   context 'create poll' do
 
     let(:json) { JSON.parse(response.body) }
+
+    context 'without Content-Type' do
+
+      it 'return 406 NOT ACCEPTABLE' do
+        raw = {
+                :options => [
+                  "First choice",
+                  "Second choice"
+                  ]
+                }.to_json
+        post :create, body: raw, :format => :json
+        expect(response).to have_http_status(:not_acceptable)
+      end
+
+    end
 
     context 'without description' do
 
@@ -102,23 +117,6 @@ RSpec.describe PollsController, type: :controller do
         expect(json).to include("poll_id")
       end
 
-    end
-
-  end
-
-  context 'poll vote' do
-
-    before :each do
-
-    end
-
-    context 'without description' do
-    end
-
-    context 'with wrong poll id' do
-    end
-
-    context 'with right params' do
     end
 
   end

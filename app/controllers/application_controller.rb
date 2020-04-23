@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
   include ActionController::ImplicitRender
+  include ErrorSerializer
 
   before_action :ensure_json_request
 
